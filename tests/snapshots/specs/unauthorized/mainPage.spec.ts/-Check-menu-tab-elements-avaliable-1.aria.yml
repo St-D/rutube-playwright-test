@@ -1,0 +1,73 @@
+- navigation "Облегченная панель навигации":
+  - list:
+    - listitem:
+      - link "Главная":
+        - /url: /
+        - paragraph: Главная
+    - listitem:
+      - link "Кино и сериалы":
+        - /url: /feeds/movies-serials/
+        - paragraph: Кино и сериалы
+    - listitem:
+      - link "Детям":
+        - /url: /feeds/kids/
+        - paragraph: Детям
+    - listitem:
+      - link "RUTUBE x PREMIER":
+        - /url: /feeds/premier/
+        - paragraph: RUTUBE x PREMIER
+    - listitem:
+      - link "RUTUBE х КИОН":
+        - /url: /feeds/kion/
+        - paragraph: RUTUBE х КИОН
+    - listitem:
+      - link "RUTUBE для блогеров":
+        - /url: /for_creators
+        - paragraph: RUTUBE для блогеров
+    - listitem:
+      - link "Каталог":
+        - /url: /categories/
+        - paragraph: Каталог
+    - listitem:
+      - link "В топе":
+        - /url: /feeds/top/
+        - paragraph: В топе
+    - listitem:
+      - link "Shorts":
+        - /url: /shorts/?entry_point=3
+        - paragraph: Shorts
+    - listitem:
+      - link "ТВ онлайн":
+        - /url: /feeds/live/
+        - paragraph: ТВ онлайн
+    - listitem:
+      - link "Спорт":
+        - /url: /feeds/sport/
+        - paragraph: Спорт
+  - separator
+  - list:
+    - listitem:
+      - link "Подписки":
+        - /url: /my/subscriptions/
+        - paragraph: Подписки
+    - listitem:
+      - link "История просмотра":
+        - /url: /my/history/
+        - paragraph: История просмотра
+    - listitem:
+      - link "Плейлисты":
+        - /url: /my/playlists/
+        - paragraph: Плейлисты
+    - listitem:
+      - link "Смотреть позже":
+        - /url: /my/future/
+        - paragraph: Смотреть позже
+    - listitem:
+      - link "Комментарии":
+        - /url: /my/comments/
+        - paragraph: Комментарии
+    - listitem:
+      - link "Понравилось":
+        - /url: /my/liked/
+        - paragraph: Понравилось
+  - separator
