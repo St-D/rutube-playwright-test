@@ -1,0 +1,178 @@
+- list:
+    - listitem:
+        - link "Главная":
+            - /url: /
+            - paragraph: Главная
+    - listitem:
+        - link "Кино и сериалы":
+            - /url: /feeds/movies-serials/
+            - paragraph: Кино и сериалы
+    - listitem:
+        - link "Детям":
+            - /url: /feeds/kids/
+            - paragraph: Детям
+    - listitem:
+        - link "RUTUBE x PREMIER":
+            - /url: /feeds/premier/
+            - paragraph: RUTUBE x PREMIER
+    - listitem:
+        - link "RUTUBE х КИОН":
+            - /url: /feeds/kion/
+            - paragraph: RUTUBE х КИОН
+    - listitem:
+        - link "RUTUBE для блогеров":
+            - /url: /for_creators
+            - paragraph: RUTUBE для блогеров
+    - listitem:
+        - link "Каталог":
+            - /url: /categories/
+            - paragraph: Каталог
+    - listitem:
+        - link "В топе":
+            - /url: /feeds/top/
+            - paragraph: В топе
+    - listitem:
+        - link "Shorts":
+            - /url: /shorts/?entry_point=3
+            - paragraph: Shorts
+    - listitem:
+        - link "ТВ онлайн":
+            - /url: /feeds/live/
+            - paragraph: ТВ онлайн
+    - listitem:
+        - link "Спорт":
+            - /url: /feeds/sport/
+            - paragraph: Спорт
+- separator
+- paragraph: Подписывайтесь на каналы, комментируйте видео и ставьте реакции
+- button "Вход"
+- button "Активировать промокод"
+- separator
+- region "Моё":
+    - button "Моё":
+        - paragraph: Моё
+        - img
+    - list:
+        - listitem:
+            - link "Подписки":
+                - /url: /my/subscriptions/
+                - paragraph: Подписки
+        - listitem:
+            - link "История просмотра":
+                - /url: /my/history/
+                - paragraph: История просмотра
+        - listitem:
+            - link "Плейлисты":
+                - /url: /my/playlists/
+                - paragraph: Плейлисты
+        - listitem:
+            - link "Смотреть позже":
+                - /url: /my/future/
+                - paragraph: Смотреть позже
+        - listitem:
+            - link "Комментарии":
+                - /url: /my/comments/
+                - paragraph: Комментарии
+        - listitem:
+            - link "Понравилось":
+                - /url: /my/liked/
+                - paragraph: Понравилось
+- separator
+- region "По темам":
+    - button "По темам":
+        - paragraph: По темам
+        - img
+- separator
+- region "Cкачать приложения":
+    - paragraph: RUTUBE всегда с вами
+    - list "Cкачать приложения":
+        - listitem:
+            - link "Google Play":
+                - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/serve\/\d+\?client_id=\d+.*/
+                - paragraph: Google Play
+        - listitem:
+            - link "Ярлык для iOS":
+                - /url: https://rutube.ru/info/rutubeapp/
+                - paragraph: Ярлык для iOS
+        - listitem:
+            - link "Huawei":
+                - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/serve\/\d+\?client_id=\d+.*/
+                - paragraph: Huawei
+        - listitem:
+            - link "RuStore":
+                - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/serve\/\d+\?client_id=\d+.*/
+                - paragraph: RuStore
+        - listitem:
+            - link "RuMarket":
+                - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/serve\/\d+\?client_id=\d+.*/
+                - paragraph: RuMarket
+        - listitem:
+            - link "Galaxy Store":
+                - /url: /https:\/\/redirect\.appmetrica\.yandex\.com\/serve\/\d+\?client_id=\d+.*/
+                - paragraph: Galaxy Store
+- paragraph: Больше от RUTUBE
+- list "Секция инструкции":
+    - listitem:
+        - link "SMART TV":
+            - /url: /smarttv/
+    - listitem:
+        - link "RUTUBE Спорт":
+            - /url: https://rutube.sport/
+- paragraph: RUTUBE в других соцсетях
+- list "Присоединяйтесь в социальных сетях":
+    - listitem:
+        - link "VK":
+            - /url: https://vk.com/rutube
+    - listitem:
+        - link "OK":
+            - /url: https://ok.ru/rutube
+    - listitem:
+        - link "Telegram":
+            - /url: https://t.me/rutube
+    - listitem:
+        - link "Дзен":
+            - /url: https://dzen.ru/rutube
+- separator
+- region "Оставьте отзыв":
+    - list:
+        - listitem:
+            - link "Вопросы и ответы":
+                - /url: /info/faq/
+                - paragraph: Вопросы и ответы
+        - listitem:
+            - link "Сообщить о проблеме":
+                - /url: /forms/problem/?page_url=https%3A%2F%2Frutube.ru%2F
+                - paragraph: Сообщить о проблеме
+        - listitem:
+            - link "Поддержка в MAX":
+                - /url: https://max.ru/rutube_support_bot
+                - paragraph: Поддержка в MAX
+        - listitem:
+            - link "help@rutube.ru":
+                - /url: /
+                - paragraph: help@rutube.ru
+- separator
+- region "Футер":
+    - list:
+        - listitem:
+            - link "О RUTUBE":
+                - /url: /info/about_company/
+        - listitem:
+            - link "Направления деятельности":
+                - /url: /info/activities/
+        - listitem:
+            - link "Пользовательское соглашение":
+                - /url: /info/agreement/
+        - listitem:
+            - link "Конфиденциальность":
+                - /url: /info/privacy/
+        - listitem:
+            - link "Правовая информация":
+                - /url: /info/legal/
+        - listitem:
+            - link "Рекомендательная система":
+                - /url: /info/recomlegal/
+        - listitem:
+            - link "Фирменный стиль":
+                - /url: https://rutube.ru/brand/
+    - paragraph: /© \d+, RUTUBE/

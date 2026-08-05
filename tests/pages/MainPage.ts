@@ -19,6 +19,7 @@ export class MainPage extends BasePage {
   // this.headerLoginBtnLocator = this.page.getByRole('button', { name: 'Вход' });
   // }
 
+  // ---------------------------------------------------
   private get headerLocator() {
     return this.page.getByRole('banner');
   }
@@ -29,7 +30,6 @@ export class MainPage extends BasePage {
     return this.page.getByLabel('Облегченная панель навигации');
   }
   private get headerAddPopupLocator() {
-    // return this.page.getByText('Загрузить видео или ShortsСоздать трансляцию');
     return this.page.getByRole('menu', { name: 'Добавить' });
   }
   private get headerAddBtnLocator() {
@@ -41,8 +41,19 @@ export class MainPage extends BasePage {
   private get headerNotificationPopupLocator() {
     return this.page.getByRole('dialog');
   }
-  private get headerLoginBtnLocator() {
-    return this.page.getByRole('button', { name: 'Вход' });
+
+  private get fullMenuBtnLocator() {
+    return this.page.getByRole('button', { name: 'Открыть меню навигации' });
+  }
+  private get fullMenuLocator() {
+    return this.page.locator('.menu-content-module__content-wrapper');
+  }
+
+  private get headerSafeModeBtnLocator() {
+    return this.page.getByRole('button', { name: 'перейти в безопасный режим' });
+  }
+  private get headerSafeModeBtnTooltipLocator() {
+    return this.page.locator('[class*="safe-mode-header-entrypoint-module__content"]');
   }
 
   get popupCloseButton() {
@@ -52,6 +63,8 @@ export class MainPage extends BasePage {
   get cookieCloseButton() {
     return this.page.getByRole('button', { name: 'Ок', exact: true });
   }
+
+  // ---------------------------------------------------
 
   async checkTitle() {
     await expect(this.page).toHaveTitle(/rutube/i);
@@ -84,17 +97,26 @@ export class MainPage extends BasePage {
 
   async headerHasAriaSnapshot() {
     await expect(this.headerLocator).toMatchAriaSnapshot({ name: 'headerAriaSnapshotc.aria.yml' });
-    // await expect(this.headerLocator).toMatchAriaSnapshot();
   }
   async categoriesHasAriaSnapshot() {
     await expect(this.categoriesTabsLocator).toMatchAriaSnapshot({
       name: 'categoriesAriaSnapshot.aria.yml',
     });
-    // await expect(this.categoriesTabsLocator).toMatchAriaSnapshot();
   }
   async menuHasAriaSnapshot() {
     await expect(this.menuLocator).toMatchAriaSnapshot({ name: 'menuAriaSnapshot.aria.yml' });
-    // await expect(this.menuLocator).toMatchAriaSnapshot();
+  }
+
+  // ---------------------------------------------------
+  async hoverAddButton() {
+    await this.headerAddBtnLocator.waitFor({ state: 'visible', timeout: 3000 });
+    await this.headerAddBtnLocator.hover();
+  }
+
+  async headerAddButtonSnapshot() {
+    await expect(this.headerAddBtnLocator).toMatchAriaSnapshot({
+      name: 'headerAddButtonHoverSnapshot.aria.yml',
+    });
   }
 
   async openAddPopup() {
@@ -103,6 +125,7 @@ export class MainPage extends BasePage {
       noWaitAfter: true, // 2. Не ждет, пока страница "затихнет" после клика
     });
   }
+  // ---------------------------------------------------
 
   async openNotificationBtnLocator() {
     await this.headerNotificationBtnLocator.click({
@@ -117,10 +140,50 @@ export class MainPage extends BasePage {
     });
   }
 
+  // ---------------------------------------------------
+
   async headerNotificationPopupSnapshot() {
+    await this.headerNotificationPopupLocator.waitFor({ state: 'visible', timeout: 3000 });
     await expect(this.headerNotificationPopupLocator).toMatchAriaSnapshot({
       name: 'headerNotificationPopupSnapshot.aria.yml',
     });
-    // await expect(this.headerNotificationPopupLocator).toMatchAriaSnapshot();
   }
+
+  async hoverNotificationButton() {
+    await this.headerNotificationBtnLocator.waitFor({ state: 'visible', timeout: 3000 });
+    await this.headerNotificationBtnLocator.hover();
+  }
+
+  async headerNotificationButtonSnapshot() {
+    await expect(this.headerNotificationBtnLocator).toMatchAriaSnapshot({
+      name: 'headerNotificationButtonHoverSnapshot.aria.yml',
+    });
+  }
+  // ---------------------------------------------------
+
+  async hoverSafeModeButton() {
+    await this.headerSafeModeBtnLocator.waitFor({ state: 'visible', timeout: 3000 });
+    await this.headerSafeModeBtnLocator.hover();
+  }
+
+  async headerSafeModeButtonSnapshot() {
+    await expect(this.headerSafeModeBtnTooltipLocator).toMatchAriaSnapshot({
+      name: 'headerSafeModeButtonHoverSnapshot.aria.yml',
+    });
+  }
+
+  // ---------------------------------------------------
+
+  async openFullMenuBtn() {
+    await this.fullMenuBtnLocator.click({ force: true, noWaitAfter: true });
+  }
+
+  async fullMenuSnapshot() {
+    await this.fullMenuLocator.waitFor({ state: 'visible', timeout: 3000 });
+    await expect(this.fullMenuLocator).toMatchAriaSnapshot({
+      name: 'fullMenuLocatorSnapshot.aria.yml',
+    });
+  }
+
+  // ---------------------------------------------------
 }
