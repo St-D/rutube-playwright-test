@@ -8,6 +8,7 @@ type MyFixtures = {
   //   todoPage: TodoPage;
   //   settingsPage: SettingsPage;
   mainPage: MainPage;
+  authMainPage: MainPage;
 };
 
 // Extend base test by providing "todoPage" and "settingsPage".
@@ -47,8 +48,13 @@ export const test = base.extend<MyFixtures>({
     // await todoPage.removeAll();
   },
 
-  //   settingsPage: async ({ page }, use) => {
-  //     await use(new SettingsPage(page));
-  //   },
+  authMainPage: async ({ page }, use) => {
+    const authMainPage = new MainPage(page);
+
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    // await page.open();
+
+    await use(authMainPage);
+  },
 });
 export { expect } from '@playwright/test';

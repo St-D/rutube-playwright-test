@@ -2,23 +2,6 @@ import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class MainPage extends BasePage {
-  // private readonly headerLocator: Locator;
-  // private readonly categoriesTabsLocator: Locator;
-  // private readonly menuLocator: Locator;
-  // private readonly headerAddBtnLocator: Locator;
-  // private readonly headerNotificationBtnLocator: Locator;
-  // private readonly headerLoginBtnLocator: Locator;
-
-  // constructor(page: Page) {
-  // super(page);
-  // this.headerLocator = this.page.getByRole('banner');
-  // this.categoriesTabsLocator = this.page.getByText('ГлавнаяЧМ-2026');
-  // this.menuLocator = this.page.getByLabel('Облегченная панель навигации');
-  // this.headerAddBtnLocator = this.page.getByRole('button', { name: 'Добавить' });
-  // this.headerNotificationBtnLocator = this.page.getByRole('button', { name: 'Уведомления' });
-  // this.headerLoginBtnLocator = this.page.getByRole('button', { name: 'Вход' });
-  // }
-
   // ---------------------------------------------------
   private get headerLocator() {
     return this.page.getByRole('banner');
@@ -56,6 +39,20 @@ export class MainPage extends BasePage {
     return this.page.locator('[class*="safe-mode-header-entrypoint-module__content"]');
   }
 
+  //--authorized Page-----------------------------------
+  // ---------------------------------------------------
+
+  get profileInfoBtn() {
+    return this.page.getByRole('button', { name: 'Открыть меню пользователя' });
+  }
+
+  get profilePopupLocator() {
+    // return this.page.getByLabel('Меню пользователя');
+    return this.page.getByRole('dialog', { name: 'Меню пользователя' });
+  }
+  // ---------------------------------------------------
+  // ---------------------------------------------------
+
   get popupCloseButton() {
     return this.page.getByTestId('popup').getByRole('button', { name: /Закрыть/ });
   }
@@ -71,8 +68,7 @@ export class MainPage extends BasePage {
   }
 
   async open() {
-    // 1. Открываем страницу и ждем только базовый HTML-каркас
-    await this.page.goto('https://rutube.ru', { waitUntil: 'domcontentloaded' });
+    await this.page.goto(process.env.BASE_URL!, { waitUntil: 'domcontentloaded' });
 
     // 2. Последовательно обрабатываем попап куков, если он появился
     try {
@@ -96,15 +92,13 @@ export class MainPage extends BasePage {
   }
 
   async headerHasAriaSnapshot() {
-    await expect(this.headerLocator).toMatchAriaSnapshot({ name: 'headerAriaSnapshotc.aria.yml' });
+    await this.checkAriaSnapshot(this.headerLocator, 'headerAriaSnapshotc.aria.yml');
   }
   async categoriesHasAriaSnapshot() {
-    await expect(this.categoriesTabsLocator).toMatchAriaSnapshot({
-      name: 'categoriesAriaSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(this.categoriesTabsLocator, 'categoriesAriaSnapshot.aria.yml');
   }
   async menuHasAriaSnapshot() {
-    await expect(this.menuLocator).toMatchAriaSnapshot({ name: 'menuAriaSnapshot.aria.yml' });
+    await this.checkAriaSnapshot(this.menuLocator, 'menuAriaSnapshot.aria.yml', 10000);
   }
 
   // ---------------------------------------------------
@@ -114,9 +108,7 @@ export class MainPage extends BasePage {
   }
 
   async headerAddButtonSnapshot() {
-    await expect(this.headerAddBtnLocator).toMatchAriaSnapshot({
-      name: 'headerAddButtonHoverSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(this.headerAddBtnLocator, 'headerAddButtonHoverSnapshot.aria.yml');
   }
 
   async openAddPopup() {
@@ -135,18 +127,17 @@ export class MainPage extends BasePage {
   }
 
   async headerAddPopupSnapshot() {
-    await expect(this.headerAddPopupLocator).toMatchAriaSnapshot({
-      name: 'headerAddPopupSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(this.headerAddPopupLocator, 'headerAddPopupSnapshot.aria.yml');
   }
 
   // ---------------------------------------------------
 
   async headerNotificationPopupSnapshot() {
-    await this.headerNotificationPopupLocator.waitFor({ state: 'visible', timeout: 3000 });
-    await expect(this.headerNotificationPopupLocator).toMatchAriaSnapshot({
-      name: 'headerNotificationPopupSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(
+      this.headerNotificationPopupLocator,
+      'headerNotificationPopupSnapshot.aria.yml',
+      3000,
+    );
   }
 
   async hoverNotificationButton() {
@@ -155,9 +146,10 @@ export class MainPage extends BasePage {
   }
 
   async headerNotificationButtonSnapshot() {
-    await expect(this.headerNotificationBtnLocator).toMatchAriaSnapshot({
-      name: 'headerNotificationButtonHoverSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(
+      this.headerNotificationBtnLocator,
+      'headerNotificationButtonHoverSnapshot.aria.yml',
+    );
   }
   // ---------------------------------------------------
 
@@ -167,9 +159,10 @@ export class MainPage extends BasePage {
   }
 
   async headerSafeModeButtonSnapshot() {
-    await expect(this.headerSafeModeBtnTooltipLocator).toMatchAriaSnapshot({
-      name: 'headerSafeModeButtonHoverSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(
+      this.headerSafeModeBtnTooltipLocator,
+      'headerSafeModeButtonHoverSnapshot.aria.yml',
+    );
   }
 
   // ---------------------------------------------------
@@ -179,11 +172,26 @@ export class MainPage extends BasePage {
   }
 
   async fullMenuSnapshot() {
-    await this.fullMenuLocator.waitFor({ state: 'visible', timeout: 3000 });
-    await expect(this.fullMenuLocator).toMatchAriaSnapshot({
-      name: 'fullMenuLocatorSnapshot.aria.yml',
-    });
+    await this.checkAriaSnapshot(this.fullMenuLocator, 'fullMenuLocatorSnapshot.aria.yml', 3000);
   }
+
+  // ---------------------------------------------------
+
+  //--authorized Page-----------------------------------
+  // ---------------------------------------------------
+
+  async openProfilePopup() {
+    await this.profileInfoBtn.click({ force: true, noWaitAfter: true });
+  }
+
+  async profilePopupSnapshot() {
+    await this.checkAriaSnapshot(
+      this.profilePopupLocator,
+      'profilePopupLocatorSnapshot.aria.yml',
+      3000,
+    );
+  }
+  // ---------------------------------------------------
 
   // ---------------------------------------------------
 }

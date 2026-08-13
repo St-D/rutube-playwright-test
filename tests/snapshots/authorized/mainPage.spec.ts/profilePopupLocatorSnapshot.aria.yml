@@ -1,0 +1,33 @@
+- dialog "Меню пользователя":
+  - link "Перейти в профиль":
+    - /url: /profile/info/
+    - img "Иконка канала channel80342047":
+      - img "Иконка канала channel80342047"
+    - heading "channel80342047" [level=5]
+    - text: Добавьте номер телефона
+    - img
+  - img
+  - img "детский профиль"
+  - heading "Создать детский профиль" [level=5]
+  - link "Единый профиль":
+    - /url: https://account.gid.ru/office/profile
+    - img
+    - paragraph: Единый профиль
+    - img
+  - list:
+    - listitem:
+      - link "Профиль":
+        - /url: /profile/
+    - listitem:
+      - link "Мой канал":
+        - /url: /channel/80342047/
+    - listitem:
+      - link "Студия RUTUBE":
+        - /url: https://studio.rutube.ru/
+  - button "Изменить тему оформления":
+    - text: Тема оформления
+    - img
+    - img
+  - button "Выйти из профиля":
+    - img
+    - text: ""
