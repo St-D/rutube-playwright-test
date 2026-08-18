@@ -7,7 +7,7 @@ test.setTimeout(180000);
 
 test('Генерация и сохранение сессии авторизации RUTUBE', async ({ page, context }) => {
   const mainPage = new MainPage(page);
-  await mainPage.open();
+  await mainPage.open('/');
 
   console.log('👉 ОЖИДАНИЕ: Пожалуйста, войдите в аккаунт в окне браузера...');
 

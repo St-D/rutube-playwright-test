@@ -1,5 +1,4 @@
-import { test, expect } from '../../fixtures/fixtures'; // Импортируем расширенный тест с фикстурами
-
+import { test, expect } from '../../fixtures/fixtures';
 test.describe.configure({ mode: 'serial' });
 
 test('> Check user profile popUp for authorized user', async ({ authMainPage }) => {

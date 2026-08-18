@@ -43,10 +43,13 @@ export default defineConfig({
     {
       name: 'unauthorized ~Edge~',
       snapshotPathTemplate: 'tests/snapshots/unauthorized/{testFilePath}/{arg}{ext}',
-      // testDir: './tests/specs/unauthorized',
       testDir: 'tests/specs/unauthorized',
-      use: { ...devices['Desktop Edge'] },
-      baseURL: process.env.BASE_URL,
+      // testDir: 'tests/specs',
+      use: {
+        ...devices['Desktop Edge'],
+        storageState: path.resolve(__dirname, 'playwright/.auth/guest.json'),
+        baseURL: process.env.BASE_URL,
+      },
     },
 
     {

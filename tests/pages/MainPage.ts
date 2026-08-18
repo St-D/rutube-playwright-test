@@ -53,13 +53,13 @@ export class MainPage extends BasePage {
   // ---------------------------------------------------
   // ---------------------------------------------------
 
-  get popupCloseButton() {
-    return this.page.getByTestId('popup').getByRole('button', { name: /Закрыть/ });
-  }
+  // get popupCloseButton() {
+  //   return this.page.getByTestId('popup').getByRole('button', { name: /Закрыть/ });
+  // }
 
-  get cookieCloseButton() {
-    return this.page.getByRole('button', { name: 'Ок', exact: true });
-  }
+  // get cookieCloseButton() {
+  //   return this.page.getByRole('button', { name: 'Ок', exact: true });
+  // }
 
   // ---------------------------------------------------
 
@@ -67,29 +67,29 @@ export class MainPage extends BasePage {
     await expect(this.page).toHaveTitle(/rutube/i);
   }
 
-  async open() {
-    await this.page.goto(process.env.BASE_URL!, { waitUntil: 'domcontentloaded' });
+  // async open() {
+  //   await this.page.goto(process.env.BASE_URL!, { waitUntil: 'domcontentloaded' });
 
-    // 2. Последовательно обрабатываем попап куков, если он появился
-    try {
-      await this.cookieCloseButton.waitFor({ state: 'visible', timeout: 25000 });
-      await this.cookieCloseButton.click({ noWaitAfter: true });
-      await this.cookieCloseButton.waitFor({ state: 'hidden', timeout: 2000 });
-      console.log('--- [POM] Попап куков успешно закрыт ---');
-    } catch (e) {
-      console.log('--- [POM] Попап куков не появился ---');
-    }
+  //   // 2. Последовательно обрабатываем попап куков, если он появился
+  //   try {
+  //     await this.cookieCloseButton.waitFor({ state: 'visible', timeout: 25000 });
+  //     await this.cookieCloseButton.click({ noWaitAfter: true });
+  //     await this.cookieCloseButton.waitFor({ state: 'hidden', timeout: 2000 });
+  //     console.log('--- [POM] Попап куков успешно закрыт ---');
+  //   } catch (e) {
+  //     console.log('--- [POM] Попап куков не появился ---');
+  //   }
 
-    // 3. Последовательно обрабатываем попап рекламы, если он появился
-    try {
-      await this.popupCloseButton.waitFor({ state: 'visible', timeout: 25000 });
-      await this.popupCloseButton.click({ noWaitAfter: true });
-      await this.popupCloseButton.waitFor({ state: 'hidden', timeout: 2000 });
-      console.log('--- [POM] Попап рекламы успешно закрыт ---');
-    } catch (e) {
-      console.log('--- [POM] Попап рекламы не появился ---');
-    }
-  }
+  //   // 3. Последовательно обрабатываем попап рекламы, если он появился
+  //   try {
+  //     await this.popupCloseButton.waitFor({ state: 'visible', timeout: 25000 });
+  //     await this.popupCloseButton.click({ noWaitAfter: true });
+  //     await this.popupCloseButton.waitFor({ state: 'hidden', timeout: 2000 });
+  //     console.log('--- [POM] Попап рекламы успешно закрыт ---');
+  //   } catch (e) {
+  //     console.log('--- [POM] Попап рекламы не появился ---');
+  //   }
+  // }
 
   async headerHasAriaSnapshot() {
     await this.checkAriaSnapshot(this.headerLocator, 'headerAriaSnapshotc.aria.yml');

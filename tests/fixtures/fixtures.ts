@@ -1,14 +1,12 @@
 import { test as base } from '@playwright/test';
 import { MainPage } from '../pages/MainPage';
-// import { TodoPage } from './todo-page';
-// import { SettingsPage } from './settings-page';
+import { CategoriesPage } from '../pages/CategoriesPage';
 
 // Declare the types of your fixtures.
 type MyFixtures = {
-  //   todoPage: TodoPage;
-  //   settingsPage: SettingsPage;
   mainPage: MainPage;
   authMainPage: MainPage;
+  categoriesPage: CategoriesPage;
 };
 
 // Extend base test by providing "todoPage" and "settingsPage".
@@ -16,7 +14,8 @@ type MyFixtures = {
 export const test = base.extend<MyFixtures>({
   mainPage: async ({ page }, use) => {
     const mainPage = new MainPage(page);
-    await mainPage.open();
+    await mainPage.open('/');
+    await mainPage.dismissAdPopup();
 
     //----------------------------------------------------------------------------------
     // эта реализация не даёт снять снимки старницы для ariaSnapShot
@@ -50,11 +49,19 @@ export const test = base.extend<MyFixtures>({
 
   authMainPage: async ({ page }, use) => {
     const authMainPage = new MainPage(page);
-
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
-    // await page.open();
+    // await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await authMainPage.open('/');
+    await authMainPage.dismissAdPopup();
 
     await use(authMainPage);
+  },
+
+  categoriesPage: async ({ page }, use) => {
+    const categoriesPage = new CategoriesPage(page);
+    await categoriesPage.open('/categories', { waitUntil: 'load' });
+    await categoriesPage.dismissAdPopup();
+
+    await use(categoriesPage);
   },
 });
 export { expect } from '@playwright/test';
