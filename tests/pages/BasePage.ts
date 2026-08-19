@@ -1,5 +1,11 @@
 import { Page, expect, Locator } from '@playwright/test';
 
+export interface PageTestParams {
+  name: string;
+  urlTab: string;
+  prtScrName: string;
+}
+
 export class BasePage {
   readonly page: Page;
   constructor(page: Page) {
@@ -59,26 +65,6 @@ export class BasePage {
     waitUntilOptions: Parameters<Page['goto']>[1] = { waitUntil: 'domcontentloaded' },
   ) {
     await this.page.goto(url, waitUntilOptions);
-
-    // // 2. Последовательно обрабатываем попап куков, если он появился
-    // try {
-    //   await this.cookieCloseButton.waitFor({ state: 'visible', timeout: 25000 });
-    //   await this.cookieCloseButton.click({ noWaitAfter: true });
-    //   await this.cookieCloseButton.waitFor({ state: 'hidden', timeout: 2000 });
-    //   console.log('--- [POM] Попап куков успешно закрыт ---');
-    // } catch (e) {
-    //   console.log('--- [POM] Попап куков не появился ---');
-    // }
-
-    // // 3. Последовательно обрабатываем попап рекламы, если он появился
-    // try {
-    //   await this.popupCloseButton.waitFor({ state: 'visible', timeout: 5000 });
-    //   await this.popupCloseButton.click({ noWaitAfter: true });
-    //   await this.popupCloseButton.waitFor({ state: 'hidden', timeout: 3000 });
-    //   console.log('--- [POM] Попап рекламы успешно закрыт ---');
-    // } catch (e) {
-    //   console.log('--- [POM] Попап рекламы не появился ---');
-    // }
   }
 
   async scrollToBottom() {
@@ -96,5 +82,12 @@ export class BasePage {
         (elemForHide as HTMLElement).style.display = 'none';
       }
     }, element);
+  }
+
+  async pageHasLayout(locator: Locator, prtScrName: string) {
+    await expect(locator).toHaveScreenshot(prtScrName, {
+      maxDiffPixelRatio: 0.1,
+      animations: 'disabled',
+    });
   }
 }
