@@ -35,6 +35,13 @@ export default defineConfig({
 
     // Принудительно отключаем сервис-воркеры для всех тестов
     // serviceWorkers: 'block',
+    proxy: process.env.CI
+      ? {
+          server: process.env.PROXY_IP!,
+          username: process.env.PROXY_LOGIN!,
+          password: process.env.PROXY_PASSWORD!,
+        }
+      : undefined,
   },
 
   /* Configure projects for major browsers */
