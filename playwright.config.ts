@@ -42,6 +42,13 @@ export default defineConfig({
           password: process.env.PROXY_PASSWORD!,
         }
       : undefined,
+
+    // proxy: {
+    // server: '85.174.84.22:1080',
+    // server: '93.189.228.211:8080',
+    // server: 'http://109.95.220.45:8080',
+    // server: 'http://185.221.160.176:80',
+    // },
   },
 
   /* Configure projects for major browsers */
@@ -77,24 +84,24 @@ export default defineConfig({
     },
 
     //--------------------------------------
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'] },
-    },
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'] },
+    // },
+    // {
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
